@@ -35,7 +35,7 @@ Python client library/interface to the Mesos Marathon REST API
 
 %if 0%{?with_python3}
 %package -n python3-%{pypi_name}
-Summary: Python interface to the Mesos Marathon REST API.
+Summary: Python interface to the Mesos Marathon REST API
 %{?python_provide:%python_provide python3-%{pypi_name}}
 
 BuildRequires:  python3-devel
