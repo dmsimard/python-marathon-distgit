@@ -33,6 +33,26 @@ Requires:       python-requests
 %description -n python2-%{pypi_name}
 Python client library/interface to the Mesos Marathon REST API
 
+%package -n python-%{pypi_name}-doc
+Summary:        Documentation for python-%{pypi_name}
+
+BuildRequires: python-sphinx
+BuildRequires: python-sphinx_rtd_theme
+
+%description -n python-%{pypi_name}-doc
+Python client library/interface to the Mesos Marathon REST API
+
+This package contains the documentation.
+
+%package -n python2-%{pypi_name}-tests
+Summary:    Tests for python-%{pypi_name}
+Requires:   python2-%{pypi_name} = %{version}-%{release}
+
+%description -n python2-%{pypi_name}-tests
+Python client library/interface to the Mesos Marathon REST API
+
+This package contains the test files.
+
 %if 0%{?with_python3}
 %package -n python3-%{pypi_name}
 Summary: Python interface to the Mesos Marathon REST API
@@ -45,6 +65,15 @@ Requires:       python3-requests
 
 %description -n python3-%{pypi_name}
 Python client library/interface to the Mesos Marathon REST API
+
+%package -n python3-%{pypi_name}-tests
+Summary:    Tests for python-%{pypi_name}
+Requires:   python3-%{pypi_name} = %{version}-%{release}
+
+%description -n python3-%{pypi_name}-tests
+Python client library/interface to the Mesos Marathon REST API
+
+This package contains the test files.
 %endif
 
 %prep
@@ -58,6 +87,11 @@ cp %{SOURCE2} README
 %py3_build
 %endif
 
+# Generate HTML docs
+sphinx-build docs html
+# Remove the sphinx-build leftovers
+rm -rf html/.{doctrees,buildinfo}
+
 %install
 %py2_install
 %if 0%{?with_python3}
@@ -65,17 +99,29 @@ cp %{SOURCE2} README
 %endif
 
 %files -n python2-%{pypi_name}
-%doc README
+%doc html README
 %license LICENSE
 %{python2_sitelib}/%{pypi_name}
 %{python2_sitelib}/%{pypi_name}-*.egg-info
 
+%files -n python-%{pypi_name}-doc
+%license LICENSE
+%doc html README
+
+%files -n python2-%{pypi_name}-tests
+%license LICENSE
+%{python2_sitelib}/%{pypi_name}/tests
+
 %if 0%{?with_python3}
 %files -n python3-%{pypi_name}
-%doc README
+%doc html README
 %license LICENSE
 %{python3_sitelib}/%{pypi_name}
 %{python3_sitelib}/%{pypi_name}-*.egg-info
+
+%files -n python3-%{pypi_name}-tests
+%license LICENSE
+%{python3_sitelib}/%{pypi_name}/tests
 %endif
 
 %changelog
