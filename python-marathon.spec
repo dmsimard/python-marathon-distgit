@@ -7,7 +7,7 @@
 Name:           python-%{pypi_name}
 Version:        0.8.6
 Release:        1%{?dist}
-Summary:        Python client library/interface to the Mesos Marathon REST API.
+Summary:        Python client library/interface to the Mesos Marathon REST API
 
 License:        MIT
 URL:            https://github.com/thefactory/marathon-python
@@ -19,10 +19,10 @@ BuildArch:      noarch
 %description
 Marathon Client Library
 
-Python interface to the Mesos Marathon REST API.
+Python interface to the Mesos Marathon REST API
 
 %package -n python2-%{pypi_name}
-Summary: Python client library/interface to the Mesos Marathon REST API.
+Summary: Python client library/interface to the Mesos Marathon REST API
 %{?python_provide:%python_provide python2-%{pypi_name}}
 
 BuildRequires:  python2-devel
@@ -31,7 +31,7 @@ BuildRequires:  python-setuptools
 Requires:       python-requests
 
 %description -n python2-%{pypi_name}
-Python client library/interface to the Mesos Marathon REST API.
+Python client library/interface to the Mesos Marathon REST API
 
 %if 0%{?with_python3}
 %package -n python3-%{pypi_name}
@@ -44,7 +44,7 @@ BuildRequires:  python3-setuptools
 Requires:       python3-requests
 
 %description -n python3-%{pypi_name}
-Python client library/interface to the Mesos Marathon REST API.
+Python client library/interface to the Mesos Marathon REST API
 %endif
 
 %prep
