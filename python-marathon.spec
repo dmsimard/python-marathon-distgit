@@ -12,8 +12,8 @@ Summary:        Python client library/interface to the Mesos Marathon REST API
 License:        MIT
 URL:            https://github.com/thefactory/marathon-python
 Source0:        https://pypi.io/packages/source/m/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
-Source1:        https://raw.githubusercontent.com/thefactory/marathon-python/master/LICENSE
-Source2:        https://raw.githubusercontent.com/thefactory/marathon-python/master/README.md
+Source1:        https://raw.githubusercontent.com/thefactory/marathon-python/%{version}/LICENSE
+Source2:        https://raw.githubusercontent.com/thefactory/marathon-python/%{version}/README.md
 BuildArch:      noarch
 
 %description
