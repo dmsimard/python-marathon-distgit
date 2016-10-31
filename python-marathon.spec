@@ -5,15 +5,16 @@
 %global pypi_name marathon
 
 Name:           python-%{pypi_name}
-Version:        0.8.6
+Version:        0.8.7
 Release:        1%{?dist}
 Summary:        Python client library/interface to the Mesos Marathon REST API
 
+# Note: The license is not bundled in the source release tarballs
+# https://github.com/thefactory/marathon-python/issues/156
 License:        MIT
 URL:            https://github.com/thefactory/marathon-python
 Source0:        https://pypi.io/packages/source/m/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
-Source1:        https://raw.githubusercontent.com/thefactory/marathon-python/%{version}/LICENSE
-Source2:        https://raw.githubusercontent.com/thefactory/marathon-python/%{version}/README.md
+Source1:        https://raw.githubusercontent.com/thefactory/marathon-python/%{version}/README.md
 BuildArch:      noarch
 
 %description
@@ -49,8 +50,7 @@ Python client library/interface to the Mesos Marathon REST API
 
 %prep
 %setup -q -n %{pypi_name}-%{version}
-cp %{SOURCE1} LICENSE
-cp %{SOURCE2} README
+cp %{SOURCE1} README
 
 %build
 %py2_build
@@ -66,14 +66,12 @@ cp %{SOURCE2} README
 
 %files -n python2-%{pypi_name}
 %doc README
-%license LICENSE
 %{python2_sitelib}/%{pypi_name}
 %{python2_sitelib}/%{pypi_name}-*.egg-info
 
 %if 0%{?with_python3}
 %files -n python3-%{pypi_name}
 %doc README
-%license LICENSE
 %{python3_sitelib}/%{pypi_name}
 %{python3_sitelib}/%{pypi_name}-*.egg-info
 %endif
